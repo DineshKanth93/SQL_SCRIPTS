@@ -3,7 +3,7 @@ create or replace function get_Saas_country_code (fa_subledger_code customer_mas
 is 
 
 cursor c1 is 
-select country_code from 
+select country_code,company_code from 
 saas_customer_master
 where customer_code=fa_subledger_code;
  r1 c1%rowtype;
@@ -15,6 +15,8 @@ where customer_code=fa_subledger_code;
  close c1;
 
  if r1.country_code is not null then 
+
+
    return r1.country_code;
    else 
     return null;
